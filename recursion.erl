@@ -28,10 +28,8 @@ duplicate(N, Term, List) when N > 0 ->
 
 tail_reverse(L) -> tail_reverse(L, []).
 tail_reverse([], Acc) -> 
-    io:format("IO ~p~n",[Acc]),
     Acc;
 tail_reverse([H|T], Acc) -> 
-    io:format("IO ++ ~p~n",[Acc]),
     tail_reverse(T, [H|Acc]).
 
 tail_sublist(L, N) -> 
