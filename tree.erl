@@ -23,3 +23,18 @@ insert(NewKey, NewVal, {node, {Key, Val, Smaller, Larger}}) when NewKey > Key ->
     {node, {Key, Val, Smaller, insert(NewKey, NewVal, Larger)}};
 insert(Key, Val, {node, {Key, _, Smaller, Larger}}) -> 
     {node, {Key, Val, Smaller, Larger}}.
+
+has_value(Val, Tree) ->
+    try has_value1(Val, Tree) of
+        false -> false
+    catch 
+        true -> true
+    end.
+
+has_value1(Val, {node, 'nil'}) ->
+    false;
+has_value1(Val, {node, {_, Val, _, _}}) ->
+    throw(true)
+has_value1(Val, {node, {_, _, Left, Right}}) ->
+    has_value(Val, Left),
+    has_value(Val, Right).
