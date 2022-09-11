@@ -6,6 +6,9 @@
     hobbies,
     details=[]
     }).
+-include("records.hrl").
+
+included() -> #included{some_field="hey too"}.
 
 first_robot() ->
     #robot{
